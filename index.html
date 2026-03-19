@@ -348,6 +348,22 @@
             border-radius: 50%;
         }
 
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background: white;
+            border-radius: 8px;
+            padding: 5px;
+        }
+
         .timeline-date {
             color: var(--accent);
             font-size: 0.9rem;
@@ -393,10 +409,27 @@
             border-radius: 12px;
             border-left: 4px solid var(--accent);
             transition: transform 0.3s;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
         }
 
         .education-card:hover {
             transform: translateX(5px);
+        }
+
+        .institution-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background: white;
+            border-radius: 8px;
+            padding: 5px;
+            flex-shrink: 0;
+        }
+
+        .education-content {
+            flex: 1;
         }
 
         .education-level {
@@ -446,6 +479,20 @@
         .cert-item:hover {
             border-color: var(--accent);
             transform: translateX(5px);
+        }
+
+        .cert-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background: white;
+            border-radius: 8px;
+            padding: 5px;
+            flex-shrink: 0;
+        }
+
+        .cert-content {
+            flex: 1;
         }
 
         .cert-icon {
@@ -522,6 +569,16 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .timeline-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .education-card {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         /* Animações */
@@ -586,6 +643,81 @@
         <h2 class="section-title">💼 Portfólio de Projetos</h2>
         
         <div class="projects-grid">
+            <!-- Projeto Financeiro -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">Turfalloy Finance Agent</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Agente financeiro inteligente desenvolvido com foco em análise e gestão financeira. 
+                            Projeto robusto com implementação de automações e análises preditivas para controle financeiro.
+                        </p>
+                    </div>
+                    <i class="fas fa-robot" style="font-size: 2rem; color: var(--accent);"></i>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Agentes IA</span>
+                    <span class="tech-badge">Automação</span>
+                    <span class="tech-badge">Machine Learning</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/zfaria/turfalloy_finance_agent" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF Agent -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">PDF Agent</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Sistema inteligente para processamento e análise de documentos PDF utilizando 
+                            técnicas de NLP e extração de dados automatizada.
+                        </p>
+                    </div>
+                    <i class="fas fa-file-pdf" style="font-size: 2rem; color: var(--accent);"></i>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">NLP</span>
+                    <span class="tech-badge">PDF Processing</span>
+                    <span class="tech-badge">Data Extraction</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/zfaria/pdf_agent" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projetos FIAP -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">Projetos Acadêmicos FIAP</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Coleção de projetos desenvolvidos durante a pós-graduação em Data Analytics na FIAP. 
+                            Inclui análises estatísticas, modelos preditivos e dashboards interativos.
+                        </p>
+                    </div>
+                    <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--accent);"></i>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Data Analytics</span>
+                    <span class="tech-badge">Power BI</span>
+                    <span class="tech-badge">Machine Learning</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/zfaria?tab=repositories&q=fiap&type=&language=&sort=" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver Repositórios
+                    </a>
+                </div>
+            </div>
+
             <!-- Projeto 1 -->
             <div class="project-card">
                 <div class="project-header">
@@ -737,29 +869,37 @@
         
         <div class="education-grid">
             <div class="education-card">
-                <div class="education-level">Pós-graduação Lato Sensu</div>
-                <h3 class="education-course">Data Analytics</h3>
-                <div class="education-institution">FIAP</div>
-                <div class="education-year">
-                    <i class="fas fa-calendar-alt"></i> 2023 – 2024
+                <img src="./assets/fiap.png" alt="FIAP" class="institution-logo" onerror="this.style.display='none'">
+                <div class="education-content">
+                    <div class="education-level">Pós-graduação Lato Sensu</div>
+                    <h3 class="education-course">Data Analytics</h3>
+                    <div class="education-institution">FIAP</div>
+                    <div class="education-year">
+                        <i class="fas fa-calendar-alt"></i> 2023 – 2024
+                    </div>
                 </div>
             </div>
 
             <div class="education-card">
-                <div class="education-level">Tecnologia</div>
-                <h3 class="education-course">Automação Industrial</h3>
-                <div class="education-institution">FATEC São Bernardo do Campo</div>
-                <div class="education-year">
-                    <i class="fas fa-calendar-alt"></i> 2019 – 2023
+                <img src="./assets/fatec.png" alt="FATEC" class="institution-logo" onerror="this.style.display='none'">
+                <div class="education-content">
+                    <div class="education-level">Tecnologia</div>
+                    <h3 class="education-course">Automação Industrial</h3>
+                    <div class="education-institution">FATEC São Bernardo do Campo</div>
+                    <div class="education-year">
+                        <i class="fas fa-calendar-alt"></i> 2019 – 2023
+                    </div>
                 </div>
             </div>
 
             <div class="education-card">
-                <div class="education-level">Técnico</div>
-                <h3 class="education-course">Mecânica</h3>
-                <div class="education-institution">SENAI</div>
-                <div class="education-year">
-                    <i class="fas fa-calendar-alt"></i> 2016 – 2017
+                <div class="education-content" style="margin-left: 0;">
+                    <div class="education-level">Técnico</div>
+                    <h3 class="education-course">Mecânica</h3>
+                    <div class="education-institution">SENAI</div>
+                    <div class="education-year">
+                        <i class="fas fa-calendar-alt"></i> 2016 – 2017
+                    </div>
                 </div>
             </div>
         </div>
@@ -771,9 +911,14 @@
         
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-date">Jan/2024 – Dez/2025</div>
-                <h3 class="timeline-title">Técnico de Montagem</h3>
-                <div class="timeline-company">Scania Latin America</div>
+                <div class="timeline-header">
+                    <img src="./assets/scania.png" alt="Scania" class="company-logo" onerror="this.style.display='none'">
+                    <div>
+                        <div class="timeline-date">Jan/2024 – Dez/2025</div>
+                        <h3 class="timeline-title">Técnico de Montagem</h3>
+                        <div class="timeline-company">Scania Latin America</div>
+                    </div>
+                </div>
                 <div class="timeline-desc">
                     <ul>
                         <li>Atuei no processo de montagem de caminhões, executando atividades conforme padrões operacionais e requisitos de qualidade, utilizando metodologias Lean Manufacturing e ferramentas da qualidade.</li>
@@ -784,9 +929,14 @@
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-date">Jun/2021 – Mai/2023</div>
-                <h3 class="timeline-title">Técnico de Montagem</h3>
-                <div class="timeline-company">Scania Latin America</div>
+                <div class="timeline-header">
+                    <img src="./assets/scania.png" alt="Scania" class="company-logo" onerror="this.style.display='none'">
+                    <div>
+                        <div class="timeline-date">Jun/2021 – Mai/2023</div>
+                        <h3 class="timeline-title">Técnico de Montagem</h3>
+                        <div class="timeline-company">Scania Latin America</div>
+                    </div>
+                </div>
                 <div class="timeline-desc">
                     <ul>
                         <li>Atuei no processo de montagem de caminhões, executando atividades conforme padrões operacionais e requisitos de qualidade, utilizando metodologias Lean Manufacturing e ferramentas da qualidade.</li>
@@ -795,9 +945,14 @@
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-date">Mar/2018 – Ago/2019</div>
-                <h3 class="timeline-title">Atendimento ao Cliente / Embaixador da Experiência</h3>
-                <div class="timeline-company">RCP Comércio de Alimentos LTDA (McDonald's)</div>
+                <div class="timeline-header">
+                    <img src="./assets/mcdonalds.png" alt="McDonald's" class="company-logo" onerror="this.style.display='none'">
+                    <div>
+                        <div class="timeline-date">Mar/2018 – Ago/2019</div>
+                        <h3 class="timeline-title">Atendimento ao Cliente / Embaixador da Experiência</h3>
+                        <div class="timeline-company">RCP Comércio de Alimentos LTDA (McDonald's)</div>
+                    </div>
+                </div>
                 <div class="timeline-desc">
                     <ul>
                         <li>Atuei na recepção e acompanhamento da jornada do cliente no restaurante, antecipando necessidades e garantindo uma experiência positiva.</li>
@@ -814,7 +969,7 @@
         
         <div class="cert-list">
             <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <img src="./assets/alura.png" alt="Alura" class="cert-logo" onerror="this.style.display='none'">
                 <div class="cert-content">
                     <h4>Streamlit: construindo um dashboard interativo</h4>
                     <p>Alura</p>
@@ -823,7 +978,7 @@
             </div>
 
             <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <img src="./assets/alura.png" alt="Alura" class="cert-logo" onerror="this.style.display='none'">
                 <div class="cert-content">
                     <h4>Pandas: conhecendo a biblioteca</h4>
                     <p>Alura</p>
@@ -832,7 +987,7 @@
             </div>
 
             <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <img src="./assets/alura.png" alt="Alura" class="cert-logo" onerror="this.style.display='none'">
                 <div class="cert-content">
                     <h4>Python para Data Science: primeiros passos</h4>
                     <p>Alura</p>
@@ -841,7 +996,7 @@
             </div>
 
             <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <img src="./assets/alura.png" alt="Alura" class="cert-logo" onerror="this.style.display='none'">
                 <div class="cert-content">
                     <h4>Power BI Desktop: construindo meu primeiro dashboard</h4>
                     <p>Alura</p>
@@ -850,7 +1005,7 @@
             </div>
 
             <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <img src="./assets/alura.png" alt="Alura" class="cert-logo" onerror="this.style.display='none'">
                 <div class="cert-content">
                     <h4>Python para Data Science: Funções, Pacotes e Pandas</h4>
                     <p>Alura</p>
