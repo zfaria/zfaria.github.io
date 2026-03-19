@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Faria | Data Analyst & Python Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #121212;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #00d4ff;
+            --accent-hover: #00a8cc;
+            --gradient: linear-gradient(135deg, #00d4ff 0%, #7b2cbf 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navegação */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: var(--gradient);
+            padding: 4px;
+        }
+
+        .profile-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-content h2 {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Seções */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Projetos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            color: var(--accent);
+        }
+
+        /* Timeline para experiências */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--gradient);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-left: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.4rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .timeline-company {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-desc ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+
+        .timeline-desc li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Formação Acadêmica */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateX(5px);
+        }
+
+        .education-level {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .education-course {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .education-institution {
+            color: var(--text-secondary);
+        }
+
+        .education-year {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Certificados */
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: var(--bg-card);
+            padding: 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .cert-item:hover {
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .cert-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .cert-content h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .cert-date {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Contato */
+        .contact-section {
+            text-align: center;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            margin: 4rem auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .project-card, .skill-category, .timeline-item, .education-card, .cert-item {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">&lt;ZFaria /&gt;</div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="sobre">
+        <div class="profile-img-container">
+            <img src="https://github.com/zfaria.png" alt="José Faria" class="profile-img">
+        </div>
+        <div class="profile-content">
+            <h1>Olá! Eu sou José Faria</h1>
+            <h2>Data Analyst & Python Developer</h2>
+            
+            <div class="tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">BigQuery</span>
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
+                Analista de dados com background em Automação Industrial e experiência prática em ambientes 
+                de manufatura Lean. Especialista em transformar dados complexos em insights acionáveis, 
+                combinando conhecimento técnico em processos industriais com expertise em análise de dados, 
+                machine learning e visualização.
+            </p>
+
+            <div class="quote">
+                "Transformando dados em decisões estratégicas através da tecnologia e análise crítica."
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos">
+        <h2 class="section-title">💼 Portfólio de Projetos</h2>
+        
+        <div class="projects-grid">
+            <!-- Projeto 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">Dashboard de Vendas</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Sistema completo de análise de vendas com visualizações interativas e KPIs em tempo real.
+                        </p>
+                    </div>
+                    <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--accent);"></i>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">Plotly</span>
+                    <span class="tech-badge">Streamlit</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/zfaria/dashboard_vendas" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projeto 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">Machine Learning KNN</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Implementação do algoritmo K-Nearest Neighbors para classificação preditiva com análise de métricas.
+                        </p>
+                    </div>
+                    <i class="fas fa-brain" style="font-size: 2rem; color: var(--accent);"></i>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Scikit-learn</span>
+                    <span class="tech-badge">Jupyter</span>
+                    <span class="tech-badge">Pandas</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/zfaria/machine_learning_knn" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">Predição de Atraso de Voos</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Modelo preditivo para antecipar atrasos em voos com base em dados históricos e variáveis climáticas.
+                        </p>
+                    </div>
+                    <i class="fas fa-plane" style="font-size: 2rem; color: var(--accent);"></i>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Machine Learning</span>
+                    <span class="tech-badge">Data Cleaning</span>
+                    <span class="tech-badge">Matplotlib</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/zfaria/case_atraso_voo" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projeto 4 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">TikTok Trends Analytics</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Análise de tendências do TikTok utilizando técnicas de NLP e visualização de dados sociais.
+                        </p>
+                    </div>
+                    <i class="fab fa-tiktok" style="font-size: 2rem; color: var(--accent);"></i>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">NLP</span>
+                    <span class="tech-badge">API Integration</span>
+                    <span class="tech-badge">Seaborn</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/zfaria/tiktok-trends-analytics" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" style="background: var(--bg-secondary); border-radius: 20px; margin: 2rem auto;">
+        <h2 class="section-title">🛠️ Habilidades Técnicas</h2>
+        
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Linguagens & Ferramentas</h3>
+                <ul class="skill-list">
+                    <li>Python (Pandas, NumPy, Scikit-learn)</li>
+                    <li>SQL (MySQL, PostgreSQL, BigQuery)</li>
+                    <li>Excel Avançado</li>
+                    <li>Git & GitHub</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-database"></i> Data & Analytics</h3>
+                <ul class="skill-list">
+                    <li>Power BI</li>
+                    <li>BigQuery</li>
+                    <li>Snowflake</li>
+                    <li>Apache Spark</li>
+                    <li>ETL/ELT</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-brain"></i> Data Science</h3>
+                <ul class="skill-list">
+                    <li>Machine Learning</li>
+                    <li>Análise Estatística</li>
+                    <li>Data Visualization</li>
+                    <li>Streamlit</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                <ul class="skill-list">
+                    <li>AWS</li>
+                    <li>Docker</li>
+                    <li>Cloud Computing Básico</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formação Acadêmica -->
+    <section id="formacao">
+        <h2 class="section-title">🎓 Formação Acadêmica</h2>
+        
+        <div class="education-grid">
+            <div class="education-card">
+                <div class="education-level">Pós-graduação Lato Sensu</div>
+                <h3 class="education-course">Data Analytics</h3>
+                <div class="education-institution">FIAP</div>
+                <div class="education-year">
+                    <i class="fas fa-calendar-alt"></i> 2023 – 2024
+                </div>
+            </div>
+
+            <div class="education-card">
+                <div class="education-level">Tecnologia</div>
+                <h3 class="education-course">Automação Industrial</h3>
+                <div class="education-institution">FATEC São Bernardo do Campo</div>
+                <div class="education-year">
+                    <i class="fas fa-calendar-alt"></i> 2019 – 2023
+                </div>
+            </div>
+
+            <div class="education-card">
+                <div class="education-level">Técnico</div>
+                <h3 class="education-course">Mecânica</h3>
+                <div class="education-institution">SENAI</div>
+                <div class="education-year">
+                    <i class="fas fa-calendar-alt"></i> 2016 – 2017
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiência Profissional -->
+    <section id="experiencia" style="background: var(--bg-secondary); border-radius: 20px; margin: 2rem auto;">
+        <h2 class="section-title">💼 Experiência Profissional</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Jan/2024 – Dez/2025</div>
+                <h3 class="timeline-title">Técnico de Montagem</h3>
+                <div class="timeline-company">Scania Latin America</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Atuei no processo de montagem de caminhões, executando atividades conforme padrões operacionais e requisitos de qualidade, utilizando metodologias Lean Manufacturing e ferramentas da qualidade.</li>
+                        <li>Participei de iniciativas de melhoria contínua aplicando conceitos de análise de causa raiz, organização do ambiente (5S) e avaliação de riscos operacionais.</li>
+                        <li>Colaborei com equipes multidisciplinares (qualidade, produção e engenharia) na otimização de fluxos de trabalho e resolução de problemas operacionais.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jun/2021 – Mai/2023</div>
+                <h3 class="timeline-title">Técnico de Montagem</h3>
+                <div class="timeline-company">Scania Latin America</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Atuei no processo de montagem de caminhões, executando atividades conforme padrões operacionais e requisitos de qualidade, utilizando metodologias Lean Manufacturing e ferramentas da qualidade.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Mar/2018 – Ago/2019</div>
+                <h3 class="timeline-title">Atendimento ao Cliente / Embaixador da Experiência</h3>
+                <div class="timeline-company">RCP Comércio de Alimentos LTDA (McDonald's)</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Atuei na recepção e acompanhamento da jornada do cliente no restaurante, antecipando necessidades e garantindo uma experiência positiva.</li>
+                        <li>Utilização de técnicas de atendimento ao cliente, comunicação interpessoal e padrões operacionais da empresa, contribuindo para a satisfação e fidelização dos clientes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificados -->
+    <section id="certificados">
+        <h2 class="section-title">📜 Certificações</h2>
+        
+        <div class="cert-list">
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <div class="cert-content">
+                    <h4>Streamlit: construindo um dashboard interativo</h4>
+                    <p>Alura</p>
+                    <div class="cert-date">Dezembro de 2023</div>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <div class="cert-content">
+                    <h4>Pandas: conhecendo a biblioteca</h4>
+                    <p>Alura</p>
+                    <div class="cert-date">Dezembro de 2023</div>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <div class="cert-content">
+                    <h4>Python para Data Science: primeiros passos</h4>
+                    <p>Alura</p>
+                    <div class="cert-date">Dezembro de 2023</div>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <div class="cert-content">
+                    <h4>Power BI Desktop: construindo meu primeiro dashboard</h4>
+                    <p>Alura</p>
+                    <div class="cert-date">Abril de 2024</div>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <div class="cert-content">
+                    <h4>Python para Data Science: Funções, Pacotes e Pandas</h4>
+                    <p>Alura</p>
+                    <div class="cert-date">Maio de 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="contact-section">
+        <h2 class="section-title">📞 Vamos Conversar?</h2>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+            Estou sempre aberto a novas oportunidades na área de dados. 
+            Vamos transformar desafios em soluções analíticas juntos!
+        </p>
+        
+        <div style="margin-top: 2rem; color: var(--text-secondary);">
+            <i class="fas fa-envelope"></i> jose.neto26@hotmail.com
+        </div>
+        
+        <div class="social-links">
+            <a href="https://github.com/zfaria" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/jos%C3%A9-faria-a8b262180" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:jose.neto26@hotmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <a href="https://github.com/zfaria" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                <i class="fab fa-github"></i> Ver Todos os Projetos no GitHub
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 José Faria</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Hospedado no <i class="fab fa-github"></i> GitHub Pages
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação ao rolar a página
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .skill-category, .timeline-item, .education-card, .cert-item').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
